@@ -201,6 +201,7 @@ import { type InitializationResult } from '../core/initializer.js';
 import { ExtensionRefreshState } from '../config/extension-refresh-state.js';
 import { useFocus } from './hooks/useFocus.js';
 import { useAwaySummary } from './hooks/useAwaySummary.js';
+import { useTurnTokenLog } from './hooks/use-turn-token-log.js';
 import { useBracketedPaste } from './hooks/useBracketedPaste.js';
 import { useKeypress, type Key } from './hooks/useKeypress.js';
 import { keyMatchers, Command } from './keyMatchers.js';
@@ -2558,6 +2559,11 @@ export const AppContainer = (props: AppContainerProps) => {
     tipHistory,
     addItem: historyManager.addItem,
     hideTips: tipsDisabled,
+  });
+  useTurnTokenLog({
+    config,
+    streamingState,
+    addItem: historyManager.addItem,
   });
 
   // Track whether the input area has any Tab consumer (autocomplete dropdown,

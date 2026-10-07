@@ -76,6 +76,7 @@ import {
 } from '../utils/measure-element-position.js';
 import { useTerminalSize } from '../hooks/useTerminalSize.js';
 import { ICON } from '../constants.js';
+import { TurnTokensMessage } from './messages/TurnTokensMessage.js';
 
 interface HistoryItemDisplayProps {
   item: HistoryItem;
@@ -555,6 +556,9 @@ const HistoryItemDisplayComponent: React.FC<HistoryItemDisplayProps> = ({
           </Box>
           <Text dimColor>{itemForDisplay.summary}</Text>
         </Box>
+      )}
+      {itemForDisplay.type === 'turn_tokens' && (
+        <TurnTokensMessage item={itemForDisplay} />
       )}
       {itemForDisplay.type === 'compression' && (
         <CompressionMessage compression={itemForDisplay.compression} />

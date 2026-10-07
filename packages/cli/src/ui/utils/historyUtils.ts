@@ -48,6 +48,7 @@ export function isSyntheticHistoryItem(
     case 'vision_notice':
     case 'notification':
     case 'tool_use_summary':
+    case 'turn_tokens':
     case 'gemini_thought':
     case 'gemini_thought_content':
     case 'away_recap':

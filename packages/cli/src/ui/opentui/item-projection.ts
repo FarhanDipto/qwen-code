@@ -1224,6 +1224,7 @@ export function projectItemToStreamEvent(
     case 'notification':
     case 'tool_use_summary':
     case 'diff_stats':
+    case 'turn_tokens':
       return null;
     default: {
       const exhaustive: never = item;

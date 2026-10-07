@@ -415,6 +415,23 @@ export type HistoryItemToolUseSummary = HistoryItemBase & {
   precedingToolUseIds: string[];
 };
 
+export type HistoryItemTurnTokens = HistoryItemBase & {
+  type: 'turn_tokens';
+  /** Billed input for this turn, summed across every API call it made. */
+  turnInput: number;
+  turnOutput: number;
+  /** Provider-reported cached prefix — billed cheaper on most providers. */
+  turnCached: number;
+  turnTotal: number;
+  /** Session-cumulative total at the moment this turn ended. */
+  sessionTotal: number;
+  /** Current context size: what the next request pays as input. */
+  contextTokens: number;
+  /** API round-trips in this turn (>1 means tool-call continuations). */
+  requests: number;
+  durationMs: number;
+};
+
 export type HistoryItemNotification = HistoryItemBase & {
   type: 'notification';
   text: string;
@@ -799,6 +816,7 @@ export type HistoryItemWithoutId =
   | HistoryItemHelp
   | HistoryItemToolGroup
   | HistoryItemToolUseSummary
+  | HistoryItemTurnTokens
   | HistoryItemStats
   | HistoryItemModelStats
   | HistoryItemToolStats
